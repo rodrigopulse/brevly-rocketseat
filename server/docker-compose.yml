@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  db:
+    container_name: brevly-db
+    image: bitnami/postgresql:latest
+    ports:
+      - $POSTGRES_PORT:$POSTGRES_PORT
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+    volumes:
+      - 'db:/var/lib/postgresql/data'
+    networks:
+      - brevly
+      - db
+  app:
+    build: .
+    depends_on:
+      - db
+    container_name: brevly-app
+    ports:
+      - 3333:$APP_PORT
+    environment:
+      - CLOUDFLARE_ACCESS_KEY=$CLOUDFLARE_ACCESS_KEY
+      - CLOUDFLARE_SECRET_KEY=$CLOUDFLARE_SECRET_KEY
+      - CLOUDFLARE_END_POINT=$CLOUDFLARE_END_POINT
+      - CLOUDFLARE_PUBLIC_URL=$CLOUDFLARE_PUBLIC_URL
+      - CLOUDFLARE_BUCKET=$CLOUDFLARE_BUCKET
+      - POSTGRES_HOST=$POSTGRES_HOST
+    networks:
+      - brevly
+
+volumes:
+  db:
+networks:
+  brevly:
+    driver: bridge
+  db:
+    driver: bridge

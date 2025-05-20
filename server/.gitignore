@@ -1,0 +1,60 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Biome
+.biome/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Env files
+.env
+.env.*.local
+.env.local
+.env.test
+
+# Dist e builds
+dist/
+build/
+.cache/
+.expo/
+.expo-shared/
+web-build/
+
+# Expo
+*.tar.gz
+*.expo/*
+*.expo-shared/*
+
+# Mac/Linux system files
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-data/
+*.pid
+
+# PostgreSQL
+pgdata/
+*.sql
+
+# Coverage
+coverage/
+*.lcov
+
+# TypeScript
+*.tsbuildinfo
+
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Misc
+*.tgz
