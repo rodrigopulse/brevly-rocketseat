@@ -4,7 +4,7 @@ import api from './api'
 export const getShortLinkService = async (link: string) => {
   try {
     const response = await api.get(
-      `${import.meta.env.VITE_API_URL}/links/shortlink/${link}`,
+      `${import.meta.env.VITE_BACKEND_URL}/links/shortlink/${link}`,
     )
     return { data: response.data.data, error: false, status: response.status }
   } catch (error: unknown) {

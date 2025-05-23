@@ -4,7 +4,7 @@ import { api } from './api'
 export async function deleteLinkService(id: string) {
   try {
     const response = await api.delete(
-      `${import.meta.env.VITE_API_URL}/links/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/links/${id}`,
     )
     return { data: response.data, error: false, status: response.status }
   } catch (error: unknown) {

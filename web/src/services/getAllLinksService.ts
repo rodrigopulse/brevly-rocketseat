@@ -3,7 +3,7 @@ import api from './api'
 
 export async function getAllLinksService() {
   try {
-    const response = await api.get(`${import.meta.env.VITE_API_URL}/links`)
+    const response = await api.get(`${import.meta.env.VITE_BACKEND_URL}/links`)
     return { data: response.data, error: false }
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {

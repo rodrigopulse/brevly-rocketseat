@@ -9,7 +9,7 @@ export type LinkPayload = {
 export async function createLinkService(payload: LinkPayload) {
   try {
     const response = await api.post(
-      `${import.meta.env.VITE_API_URL}/links`,
+      `${import.meta.env.VITE_BACKEND_URL}/links`,
       payload,
     )
     return { data: response.data, error: false, status: response.status }

@@ -4,7 +4,7 @@ import api from './api'
 export async function exportLinksService() {
   try {
     const response = await api.get(
-      `${import.meta.env.VITE_API_URL}/links/export`,
+      `${import.meta.env.VITE_BACKEND_URL}/links/export`,
     )
     return { data: response.data, error: false }
   } catch (error: unknown) {
