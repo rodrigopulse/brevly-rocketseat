@@ -4,7 +4,7 @@ import { api } from './api'
 export async function createLinkService(id: string) {
   try {
     const response = await api.post(
-      `${import.meta.env.VITE_API_URL}/count-links`,
+      `${import.meta.env.VITE_BACKEND_URL}/count-links`,
       { id },
     )
     return { data: response.data, error: false, status: response.status }
