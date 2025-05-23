@@ -8,14 +8,8 @@ import { Upload } from "@aws-sdk/lib-storage";
 import { env } from "@/env";
 
 export const exportLinksController = async () => {
-  const {
-    POSTGRES_USER,
-    POSTGRES_PASSWORD,
-    POSTGRES_DB,
-    POSTGRES_HOST,
-    POSTGRES_PORT,
-  } = env;
-  const connection = `postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}`;
+  
+  const connection = env.DATABASE_URL;;
   const pgClient = new pg.Client({
     connectionString: connection,
   });
@@ -34,10 +28,10 @@ export const exportLinksController = async () => {
 
   const r2 = new S3Client({
     region: "auto",
-    endpoint: process.env.CLOUDFLARE_END_POINT,
+    endpoint: `https://${env.CLOUDFLARE_ACCOUNT_ID}.r2.cloudflarestorage.com`,
     credentials: {
-      accessKeyId: process.env.CLOUDFLARE_ACCESS_KEY!,
-      secretAccessKey: process.env.CLOUDFLARE_SECRET_KEY!,
+      accessKeyId: process.env.CLOUDFLARE_ACCESS_KEY_ID ?? "",
+      secretAccessKey: process.env.CLOUDFLARE_SECRET_ACCESS_KEY ?? "",
     },
   });
 

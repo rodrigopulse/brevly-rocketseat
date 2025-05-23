@@ -19,7 +19,7 @@ server.get("/", async (request, reply) => {
 
 server
   .listen({
-    port: env.APP_PORT,
+    port: env.PORT,
     host: "0.0.0.0",
   })
   .then((address) => {
